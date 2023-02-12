@@ -321,7 +321,7 @@ build_host() {
 
     export ICU_SOURCES=$icu_src_dir
     # -pthread is needed, see https://github.com/protocolbuffers/protobuf/issues/4958
-    LDFLAGS="-std=gnu++17 -pthread"
+    LDFLAGS="-pthread"
     # C, CXX and CPP flags have already been set
 
     if [ $host_os_name = "linux" ]; then
@@ -335,6 +335,11 @@ build_host() {
     # Set --prefix option to disable install to the system,
     # since we only need the libraries and header files
     # shellcheck disable=SC2086
+    echo $ICU_SOURCES
+    echo $host_os_build_type
+    echo $host_build_dir
+    echo $icu_configure_args
+
     (exec "$ICU_SOURCES/source/runConfigureICU" $host_os_build_type \
     --prefix="$host_build_dir/icu_build" $icu_configure_args)
 
@@ -449,6 +454,12 @@ build_android() {
     export PATH=$PATH:$NDK_STANDARD_ROOT/bin
 
     # shellcheck disable=SC2086
+    echo $ICU_SOURCES
+    echo $ICU_CROSS_BUILD
+    echo $icu_configure_args
+    echo $TARGET
+    echo $PWD
+
     (exec "$ICU_SOURCES/source/configure" --with-cross-build="$ICU_CROSS_BUILD" \
     $icu_configure_args --host=$TARGET --prefix="$PWD/icu_build")
 
