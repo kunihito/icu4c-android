@@ -206,7 +206,7 @@ prepare_icu_c_cxx_cpp() {
     icu_configure_args="\
         --enable-strict=no --enable-extras=no --enable-draft=$enable_draft \
         --enable-samples=$enable_samples --enable-tests=$enable_tests \
-        --enable-renaming=no --enable-icuio=$lib_io --enable-layoutex=no \
+        --disable-renaming --enable-icuio=$lib_io --enable-layoutex=no \
         --with-library-bits=$library_bits --with-library-suffix=$library_suffix"
     __FLAGS="-Os -fno-short-wchar -fno-short-enums -ffunction-sections -fdata-sections -fvisibility=hidden \
         -DU_USING_ICU_NAMESPACE=0 -DU_HAVE_NL_LANGINFO_CODESET=0 -DU_TIMEZONE=0 \
