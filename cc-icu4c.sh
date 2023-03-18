@@ -321,7 +321,7 @@ build_host() {
 
     export ICU_SOURCES=$icu_src_dir
     # -pthread is needed, see https://github.com/protocolbuffers/protobuf/issues/4958
-    LDFLAGS="-std=gnu++17 -pthread"
+    LDFLAGS="-pthread"
     # C, CXX and CPP flags have already been set
 
     if [ $host_os_name = "linux" ]; then
